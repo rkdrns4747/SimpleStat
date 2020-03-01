@@ -1,5 +1,6 @@
 package Util;
 
+import SimpleStat.StatType;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -20,7 +21,17 @@ public class UserDataUtil {
         this.player = player;
         this.plugin = plugin;
     }
-    public Boolean setUserStats(String statName, Map<String, Double> map){
+    public Boolean setUserStats(Map<StatType, Double> map){
+        String playerUUID = player.getUniqueId().toString();
+
+        return true; //will be changed
+    }
+    public Boolean setUserStat(StatType type, int level){
+        String playerUUID = player.getUniqueId().toString();
+
+        return true; //will be changed
+    }
+    public Boolean setUserStat(StatType type, int level, float progress){
         String playerUUID = player.getUniqueId().toString();
 
         return true; //will be changed
