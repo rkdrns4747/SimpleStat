@@ -28,6 +28,7 @@ public class SimpleStat extends JavaPlugin {
         }
         userDataYml = YamlConfiguration.loadConfiguration(userDataYmlFile);
         configYml = YamlConfiguration.loadConfiguration(userDataYmlFile);
+        saveResource("config.yml", false);
     }
     public static JavaPlugin getInstance(){
         return plugin;
@@ -41,7 +42,7 @@ public class SimpleStat extends JavaPlugin {
                     userDataYml.createNewFile();
 
                 if (!configYml.exists())
-                    userDataYml.createNewFile();
+                    plugin.saveDefaultConfig();
 
             } catch (IOException e) {
                 Bukkit.getLogger().warning(e.getMessage());
@@ -51,15 +52,14 @@ public class SimpleStat extends JavaPlugin {
         }
         return validation;
     }
-    private static Boolean checkFileAvailability(File yamlFile){
+    public static Boolean checkFileAvailability(File yamlFile){
         Boolean validation;
         if(!(yamlFile.exists())) {
             validation = false;
             try {
-                if (!yamlFile.exists())
-                    yamlFile.createNewFile();
 
                 if (!yamlFile.exists())
+                    yamlFile.getParentFile().mkdirs();
                     yamlFile.createNewFile();
 
             } catch (IOException e) {

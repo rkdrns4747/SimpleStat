@@ -1,5 +1,6 @@
 package Util;
 
+import SimpleStat.SimpleStat;
 import SimpleStat.StatType;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -12,27 +13,30 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 public class UserDataUtil {
-    private final File configFile;
+    private final File userDataFile;
     private static YamlConfiguration yml;
     private static Plugin plugin;
     private final Player player;
     public UserDataUtil(Plugin plugin, Player player){
-        configFile = new File(plugin.getDataFolder()+"/database", "userdata.yml");
+        userDataFile = new File(plugin.getDataFolder()+"/database", "userdata.yml");
         this.player = player;
         this.plugin = plugin;
     }
-    public Boolean setUserStats(Map<StatType, Double> map){
+    public Boolean setUserStats(Map<StatType, Integer> map){
         String playerUUID = player.getUniqueId().toString();
+        SimpleStat.checkFileAvailability(userDataFile);
 
         return true; //will be changed
     }
     public Boolean setUserStat(StatType type, int level){
         String playerUUID = player.getUniqueId().toString();
+        SimpleStat.checkFileAvailability(userDataFile);
 
         return true; //will be changed
     }
-    public Boolean setUserStat(StatType type, int level, float progress){
+    public Boolean setUserStatPoint(int point){
         String playerUUID = player.getUniqueId().toString();
+        SimpleStat.checkFileAvailability(userDataFile);
 
         return true; //will be changed
     }
